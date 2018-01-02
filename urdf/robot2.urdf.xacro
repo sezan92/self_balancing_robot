@@ -1,0 +1,151 @@
+<?xml version = "1.0" ?>
+<robot name = "Self_Balancing_Robot" xmlns:xacro ="http://ros.org/wiki/xacro" >
+	<xacro:macro name = "Chassis_Origin">
+		<origin xyz = "0 0 0" rpy = "0 0 0"/>
+	</xacro:macro>
+	<xacro:macro name = "Right_Wheel_Origin">
+		<origin rpy = "0 0 0" xyz = "0 0.160 0.0"/> <!-- Previous <origin rpy = "0 0 0" xyz = ".005 0.160 0.010"/> -->
+	</xacro:macro>
+	<xacro:macro name ="Left_Wheel_Origin">
+
+		<origin rpy = "0 0 0" xyz = "0.00 -0.015 0.00"/> <!-- <origin rpy = "0 0 0" xyz = "0.005 -0.015 0.010"/> -->
+
+	</xacro:macro> 
+	<sdf version = "1.4"/>
+	<link name="base_footprint">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="0.001 0.001 0.001" />
+			</geometry>
+		</visual>
+	</link>
+	<joint name="base_link_joint" type="fixed">
+		<xacro:Chassis_origin />
+		<parent link="base_footprint"/>
+		<child link="Chassis" />
+	
+	</joint>
+
+
+	
+
+<link name = "Chassis">
+		<inertial>
+			<xacro:Chassis_origin />
+			<mass value = "0.388"/>
+			<inertia ixx =".01687" iyy=".01517" izz=".05897" ixy=".02146" ixz =".04541" iyz = ".0102"/>
+		</inertial>
+		<collision>
+			<geometry>
+				<mesh filename ="package://self_balancing_robot/meshes/Assem2_No_WheelTiny.STL"/>
+				 
+			</geometry> <!--
+			<origin rpy = "0 0 0" xyz ="0 0 0.1101"/> -->
+			<xacro:Chassis_origin /> 
+			
+		</collision>
+		<visual>
+			<geometry>
+				<!--<box size = "0.075 0.175 0.157"/> -->
+				<mesh filename ="package://self_balancing_robot/meshes/Assem_No_wheelTiny.dae"/> 
+				<!--<mesh filename ="package://self_balancing_robot/meshes/Assem2_No_Wheel.STL"/>-->
+			</geometry>
+			<xacro:Chassis_origin />
+			
+
+		</visual>
+	</link>
+	<link name = "Right_Wheel">
+		<inertial>
+			<xacro:Chassis_origin />
+			<mass value ="0.03770"/>
+			<inertia ixx ="0.000233" ixz = "0.000002560" iyy = "0.000236407" iyz = "0.000043120" ixy = "0.000000528" izz = "0.000024435"/>
+		</inertial>
+		<collision>
+			<geometry>
+			<!--<cylinder radius="0.0316" length ="0.037"/>	-->
+			<mesh filename="package://self_balancing_robot/meshes/WheelZRightTiny.STL"/>
+			</geometry>
+			<!--
+			<origin rpy = "0 0 0" xyz = "0 0.1100 0.0316"/> -->
+			<xacro:Chassis_origin /> 
+
+		</collision>
+		<visual>
+			<geometry>
+			<mesh filename="package://self_balancing_robot/meshes/WheelZTinyRight.dae"/>
+			</geometry>
+			
+			<xacro:Chassis_origin />  
+			
+		</visual>
+	</link>
+	<joint name ="Right_wheel_Joint" type = "continuous">
+		<parent link = "Chassis"/>
+		<child link = "Right_Wheel"/>
+		<origin xyz = "0 0.0875 0" rpy ="0 0 0.0"/>
+		<limit effort="100000" velocity="100000"/>
+        <axis xyz="0 1 0"/>
+	</joint>
+	<link name = "Left_Wheel">
+		<inertial>
+			<xacro:Chassis_origin />
+			<mass value ="0.03770"/>
+			<inertia ixx ="0.000233" ixz = "0.000002560" iyy = "0.000236407" iyz = "0.000043120" ixy = "0.000000528" izz = "0.000024435"/>
+		</inertial>
+		<collision>
+			<geometry>
+			<!--<cylinder radius="0.0316" length ="0.037"/> -->
+			<mesh filename="package://self_balancing_robot/meshes/WheelZRightTiny.STL"/>
+			</geometry>
+			
+			<xacro:Chassis_origin />
+
+		</collision>
+		<visual>
+			<geometry>
+				<mesh filename="package://self_balancing_robot/meshes/WheelZTinyRight.dae"/>
+			</geometry>
+			
+			<xacro:Chassis_origin /> 
+			
+		</visual>
+	</link>
+	<joint name ="Left_wheel_Joint" type = "continuous">
+		<parent link = "Chassis"/>
+		<child link = "Left_Wheel"/>
+		<origin xyz = "0 -0.0875 0" rpy ="0 0 0.0"/>
+		<limit effort="100000" velocity="100000"/>
+        <axis xyz="0 -1 0"/>
+	</joint>
+	<!--fdfjdsf-->
+	<gazebo>
+		<plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
+			<commandTopic>cmd_vel</commandTopic>
+			<odometryTopic>odom</odometryTopic>
+			<odometryFrame>odom</odometryFrame>
+			<odometryRate>20.0</odometryRate>
+			<robotBaseFrame>base_footprint</robotBaseFrame>
+		</plugin>
+	</gazebo> 
+ <gazebo> 
+    	<plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+      	<legacyMode>false</legacyMode>
+      	<alwaysOn>true</alwaysOn>
+      	<updateRate>10</updateRate>
+      	<leftJoint>Left_wheel_Joint</leftJoint>
+      	<rightJoint>Right_wheel_Joint</rightJoint>
+      	<wheelSeparation>0.175</wheelSeparation>
+      	<wheelDiameter>0.0632</wheelDiameter>
+      	<torque>10</torque>
+      	<commandTopic>cmd_vel2</commandTopic>
+      	<odometryTopic>odom</odometryTopic>
+      	<odometryFrame>odom</odometryFrame>
+      	<robotBaseFrame>Chassis</robotBaseFrame>
+
+    </plugin>
+  </gazebo>
+
+
+</robot>

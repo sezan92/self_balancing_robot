@@ -1,0 +1,6 @@
+publish_interval: 100
+settings:
+  /Kd/data: {is_repeat: false, max: 1.0, min: -1.0}
+  /Ki/data: {is_repeat: false, max: 1.0, min: -1.0}
+  /Kp/data: {is_repeat: false, max: 1.0, min: -1.0}
+texts: [/Kp/data, /Ki/data, /Kd/data]

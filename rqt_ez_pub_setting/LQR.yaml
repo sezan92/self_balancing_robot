@@ -1,0 +1,5 @@
+publish_interval: 100
+settings:
+  /Q/data: {is_repeat: false, max: 1000.0, min: 0.0}
+  /R/data: {is_repeat: false, max: 1.0, min: 0.0}
+texts: [/R/data, /Q/data]

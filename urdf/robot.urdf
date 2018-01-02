@@ -1,0 +1,95 @@
+<?xml version = "1.0" ?>
+<robot name = "Self_Balancing_Robot">
+	<link name = "Chassis">
+		<inertial>
+			<origin xyz ="0.05896 0.08935 0.172" rpy = "0 0 0"/>
+			<mass value = "0.388"/>
+			<inertia ixx =".01687" iyy=".01517" izz=".05897" ixy=".02146" ixz =".04541" iyz = ".0102"/>
+		</inertial>
+		<collision>
+			<geometry>
+				
+				<box size = "0.075 0.175 0.157"/> 
+			</geometry> <!--
+			<origin rpy = "0 0 0" xyz ="0 0 0.1101"/> -->
+			<origin rpy = "0 0 0" xyz ="0 0 0.0"/> 
+			
+		</collision>
+		<visual>
+			<geometry>
+				<!--<box size = "0.075 0.175 0.157"/> -->
+				<mesh filename ="package://self_balancing_robot/meshes/Assem_No_wheelTiny.dae"/> 
+				<!--<mesh filename ="package://self_balancing_robot/meshes/Assem2_No_Wheel.STL"/>-->
+			</geometry>
+			<origin rpy = "0 0 0" xyz ="0 0 0.0"/> 
+			
+
+		</visual>
+	</link>
+	
+	<link name = "Right_Wheel">
+		<inertial>
+			<origin xyz ="0.00091 0.01535 0.07450" rpy = "0 0 0"/>
+			<mass value ="0.03770"/>
+			<inertia ixx ="0.000233" ixz = "0.000002560" iyy = "0.000236407" iyz = "0.000043120" ixy = "0.000000528" izz = "0.000024435"/>
+		</inertial>
+		<collision>
+			<geometry>
+			<cylinder radius="0.0316" length ="0.037"/>	
+			
+			</geometry>
+			<!--
+			<origin rpy = "0 0 0" xyz = "0 0.1100 0.0316"/> -->
+			<origin rpy = "0 0 0" xyz = ".005 0.160 0.010"/> 
+
+		</collision>
+		<visual>
+			<geometry>
+			<mesh filename="package://self_balancing_robot/meshes/WheelZTiny.dae"/>
+			</geometry>
+			
+			<origin rpy = "0 0 0" xyz = ".005 0.160 0.010"/>  
+			
+		</visual>
+	</link>
+	<joint name ="Right_wheel_Joint" type = "revolute">
+		<parent link = "Chassis"/>
+		<child link = "Right_Wheel"/>
+		<origin xyz = "0 0.0875 0" rpy ="0 0 0.0"/>
+		<limit effort="100" velocity="0.5"/>
+        <axis xyz="0 1 0"/>
+	</joint>
+	
+	<link name = "Left_Wheel">
+		<inertial>
+			<origin xyz ="0.00091 0.01535 0.07450" rpy = "0 0 0"/>
+			<mass value ="0.03770"/>
+			<inertia ixx ="0.000233" ixz = "0.000002560" iyy = "0.000236407" iyz = "0.000043120" ixy = "0.000000528" izz = "0.000024435"/>
+		</inertial>
+		<collision>
+			<geometry>
+			<cylinder radius="0.0316" length ="0.037"/>
+			</geometry>
+			
+			<origin rpy = "0 0 0" xyz = "0.005 -0.015 0.010"/> 
+
+		</collision>
+		<visual>
+			<geometry>
+				<mesh filename="package://self_balancing_robot/meshes/WheelZTiny.dae"/>
+			</geometry>
+			
+			<origin rpy = "0 0 0" xyz = "0.005 -0.015 0.010"/> 
+			
+		</visual>
+	</link>
+	<joint name ="Left_wheel_Joint" type = "revolute">
+		<parent link = "Chassis"/>
+		<child link = "Left_Wheel"/>
+		<origin xyz = "0 -0.0875 0" rpy ="0 0 0.0"/>
+		<limit effort="100" velocity="0.5"/>
+        <axis xyz="0 1 0"/>
+	</joint>
+
+
+</robot>
