@@ -1,7 +1,11 @@
 ## Self Balancing Robot Simulation using ROS and Gazebo
 
+### Video 
+The youtube link of videos are given in the notebook files. They can be accessed from [PID](https://www.youtube.com/watch?v=kssD8unnWls), [Fuzzy](https://www.youtube.com/watch?v=FoG59xl2c9I) and [LQR](https://www.youtube.com/watch?v=QmrRNw043dY) respectively.
+
 In this project I have build a Self Balancing Robot Simulation in Gazebo.
 The files are structured as following
+
 
 ### Notebook Folder
 It has two jupyter notebook files . One contains the Description of Robot Model development named ```Self Balancing Robot.ipynb``` . The ```Controllers.ipynb``` describes the testing of the controllers, with Videos.
@@ -34,5 +38,3 @@ roslaunch self_balancing_robot main_LQR.launch
 
 For any feedbacks and or suggestions , please contact sezan92@gmail.com
 
-### Video 
-The youtube link of videos are given in the notebook files. They can be accessed from [PID](https://www.youtube.com/watch?v=kssD8unnWls), [Fuzzy](https://www.youtube.com/watch?v=FoG59xl2c9I) and [LQR](https://www.youtube.com/watch?v=QmrRNw043dY) respectively.
