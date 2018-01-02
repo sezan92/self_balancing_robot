@@ -1,0 +1,14 @@
+<?xml version ="1.0" encoding = "UTF-8"?>
+
+<launch>
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+
+    </include>
+    <include file = "$(find self_balancing_robot)/launch/spawn_urdf_Fuzzy.launch">
+        <arg name = "x" value="0.0"/>
+        <arg name = "y" value = "0.0"/>
+        <arg name = "z" value ="0.0"/>
+        
+        <arg name = "robot_name" value = "self_balancing_robot"/>
+    </include>
+</launch>
