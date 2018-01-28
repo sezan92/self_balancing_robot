@@ -200,7 +200,7 @@
         	<rateGaussianNoise>0.00 0.00 0.00</rateGaussianNoise>
         	<headingDrift>0.0</headingDrift>
         	<headingGaussianNoise>0.00</headingGaussianNoise>
-			<updateRate>100</updateRate>
+			<updateRate>00</updateRate>
 		</plugin>
 	</gazebo>
 	<!--<gazebo>
