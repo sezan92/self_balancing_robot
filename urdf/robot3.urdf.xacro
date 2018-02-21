@@ -1,6 +1,6 @@
 <?xml version = "1.0" ?>
 <robot name = "Self_Balancing_Robot" xmlns:xacro ="http://ros.org/wiki/xacro" >
-	<xacro:macro name = "Chassis_Origin">
+	<xacro:macro name = "Chassis_origin">
 		<origin xyz = "0 0 0" rpy = "0 0 0"/>
 	</xacro:macro>
 	<xacro:macro name = "Right_Wheel_Origin">
