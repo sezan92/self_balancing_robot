@@ -1,4 +1,6 @@
 ## Self Balancing Robot Simulation using ROS and Gazebo
+### Paper
+[DOI link](https://aip.scitation.org/doi/10.1063/1.5044373) 
 
 ### Video 
 The youtube link of videos are given in the notebook files. They can be accessed from [PID](https://www.youtube.com/watch?v=kssD8unnWls), [Fuzzy](https://www.youtube.com/watch?v=FoG59xl2c9I) and [LQR](https://www.youtube.com/watch?v=QmrRNw043dY) respectively.
