@@ -44,3 +44,16 @@ roslaunch self_balancing_robot main_LQR.launch
 
 For any feedbacks and or suggestions , please contact sezan92@gmail.com
 
+
+### Update 29 July 2018
+
+#### DQN
+For Deep Q Network control
+```roslaunch self_balancing_robot main_no_control.launch```
+For running the code of DQN, go to ```Notebook/SelfBalanceDeepRLQ.ipynb``` and run
+
+#### Paper link
+Paper [link](https://arxiv.org/pdf/1807.08272.pdf)
+#### Video
+[Video link](https://www.youtube.com/watch?v=OU7jb2B4L-c&t=712s)
+
